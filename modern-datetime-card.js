@@ -462,7 +462,13 @@ customElements.define('modern-datetime-card', ModernDatetimeCard);
 
 class ModernDatetimeCardEditor extends HTMLElement {
   setConfig(config) {
-    this._config = { ...config };
+    this._config = {
+      show_title: true,
+      show_icon: true,
+      title_alignment: 'left',
+      minute_step: 1,
+      ...config,
+    };
     this._render();
   }
 
