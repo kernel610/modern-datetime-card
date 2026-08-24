@@ -13,12 +13,16 @@ A touch-friendly Lovelace card for Home Assistant `input_datetime` entities. Ins
 - Responsive: scales itself down automatically in narrow layouts (e.g. 2-column mobile dashboards) via CSS container queries
 
 ## Installation
-
-1. Copy `modern-datetime-card.js` into `config/www/` in your Home Assistant instance.
-2. In Home Assistant, go to **Settings → Dashboards → ⋮ (top right) → Resources → Add Resource**.
-   - URL: `/local/modern-datetime-card.js`
-   - Resource type: **JavaScript Module**
-3. Refresh your browser (hard refresh if you've installed this before and are updating — see note below).
+ 
+### HACS (custom repository)
+ 
+This card isn't in the default HACS store yet, so it needs to be added as a custom repository first:
+ 
+1. Open **HACS** in the Home Assistant sidebar.
+2. Click the three-dot menu (top right) → **Custom repositories**.
+3. Paste this repository's URL, set the type to **Dashboard**, and click **Add**.
+4. Search for **Modern Date/Time Card** in HACS and click **Download**.
+5. HACS installs the file. Refresh your browser if the card doesn't show up right away in **Add Card**.
 
 ## Usage
 
