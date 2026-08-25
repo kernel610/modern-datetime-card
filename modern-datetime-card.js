@@ -84,7 +84,7 @@ class ModernDatetimeCard extends HTMLElement {
         ha-card {
           padding: clamp(12px, 4cqw, 20px) clamp(8px, 4cqw, 20px) clamp(14px, 4.5cqw, 22px);
           overflow: hidden;
-          --step-h: clamp(30px, 11cqw, 46px);
+          --step-h: clamp(32px, 12cqw, 50px);
           --step-w: calc(var(--step-h) * 1.2);
         }
         .header {
@@ -117,8 +117,8 @@ class ModernDatetimeCard extends HTMLElement {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: clamp(3px, 1.5cqw, 8px);
-          margin-bottom: clamp(12px, 4cqw, 20px);
+          gap: clamp(4px, 2cqw, 10px);
+          margin-bottom: clamp(10px, 3cqw, 14px);
         }
         .time-row.hidden { display: none; }
         .stepper {
@@ -146,15 +146,15 @@ class ModernDatetimeCard extends HTMLElement {
         .step-btn ha-icon { --mdc-icon-size: clamp(16px, 6cqw, 22px); }
         .step-btn:active { background: var(--divider-color, #e0e0e0); }
         .digit {
-          font-size: clamp(30px, 15cqw, 56px);
+          font-size: clamp(32px, 16cqw, 60px);
           font-weight: 500;
-          min-width: clamp(46px, 18cqw, 88px);
+          min-width: clamp(48px, 19cqw, 92px);
           text-align: center;
           color: var(--primary-text-color);
           font-variant-numeric: tabular-nums;
         }
         .colon {
-          font-size: clamp(30px, 15cqw, 56px);
+          font-size: clamp(32px, 16cqw, 60px);
           font-weight: 500;
           color: var(--secondary-text-color);
           padding-bottom: calc(var(--step-h) + 5px);
@@ -162,19 +162,18 @@ class ModernDatetimeCard extends HTMLElement {
         }
         .ampm {
           display: flex;
-          flex-direction: column;
-          gap: clamp(4px, 1.5cqw, 7px);
-          margin-left: clamp(4px, 2cqw, 10px);
-          flex-shrink: 0;
+          gap: clamp(6px, 2.5cqw, 10px);
+          margin-bottom: clamp(12px, 4cqw, 20px);
         }
+        .ampm.hidden { display: none; }
         .ampm button {
-          width: clamp(40px, 13cqw, 60px);
-          height: clamp(27px, 9cqw, 38px);
-          border-radius: 22%;
+          flex: 1;
+          height: clamp(32px, 9cqw, 40px);
+          border-radius: clamp(8px, 3cqw, 12px);
           border: 1px solid var(--divider-color, #e0e0e0);
           background: var(--card-background-color);
           color: var(--secondary-text-color);
-          font-size: clamp(11px, 3.5cqw, 14px);
+          font-size: clamp(12px, 3.5cqw, 15px);
           font-weight: 500;
           cursor: pointer;
           touch-action: manipulation;
@@ -251,10 +250,11 @@ class ModernDatetimeCard extends HTMLElement {
             <div class="digit" id="min-display">00</div>
             <button class="step-btn" id="min-down" aria-label="Decrease minute"><ha-icon icon="mdi:chevron-down"></ha-icon></button>
           </div>
-          <div class="ampm">
-            <button id="am-btn">AM</button>
-            <button id="pm-btn">PM</button>
-          </div>
+        </div>
+
+        <div class="ampm" id="ampm-row">
+          <button id="am-btn">AM</button>
+          <button id="pm-btn">PM</button>
         </div>
 
         <div class="date-row" id="date-row">
@@ -359,8 +359,10 @@ class ModernDatetimeCard extends HTMLElement {
     }
 
     const timeRow = root.getElementById('time-row');
+    const ampmRow = root.getElementById('ampm-row');
     const dateRow = root.getElementById('date-row');
     timeRow.classList.toggle('hidden', !this._hasTime);
+    ampmRow.classList.toggle('hidden', !this._hasTime);
     dateRow.classList.toggle('hidden', !this._hasDate);
 
     if (this._hasTime) {
