@@ -77,8 +77,11 @@ class ModernDatetimeCard extends HTMLElement {
     const accent = this._config.accent_color || 'var(--primary-color)';
     this.shadowRoot.innerHTML = `
       <style>
-        ha-card {
+        :host {
+          display: block;
           container-type: inline-size;
+        }
+        ha-card {
           padding: clamp(12px, 4cqw, 20px) clamp(8px, 4cqw, 20px) clamp(14px, 4.5cqw, 22px);
           overflow: hidden;
           --step-h: clamp(30px, 11cqw, 46px);
